@@ -1,0 +1,67 @@
+{% extends "base_body_links.html" %}
+{% block head_data %}
+<style>
+    .bs-callout{
+        margin: 20px 0;
+        padding: 15px 30px 15px 15px;
+        border-left: 5px solid #eee;
+    }
+    .bs-callout h4{
+        margin-top: 0;
+    }
+    .bs-callout p:last-child{
+        margin-bottom: 0;
+    }
+    .bs-callout code, bs-callout .highlight{
+        background-color: #fff;
+    }
+    .bs-callout-info{
+        background-color: #eee;
+        border-color: #ddd;
+    }
+    .bs-callout-info-2{
+        background-color: #eef;
+        border-color: #dde;
+    }
+    .absolute-center {
+        margin: auto;
+        position: absolute;
+        top: 0; left: 0; bottom: 0; right: 0;
+    }
+    .vertical-center{
+        padding-top: 35px;
+    }   
+    .table-head-centered table thead tr th{
+        text-align: center;
+    }
+</style>
+{% endblock %}
+{% block header%}
+    Ваши пассажиры
+{% endblock %}
+
+{% block content %}
+{% for order in orders %}
+<div class="container table-head-centered">
+    <table class="table table-striped table-bordered table-condensed">
+    <caption>Ваш рейс: {{ order.0 }}</caption>
+    <thead>
+        <tr>
+            <th>Пассажир</th>
+            <th>Места</th>
+            <th>Багажные места</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for user_order in  order.1 %}
+        <tr>
+            <td>{{ user_order.user.username}}</td>
+            <td>{{ user_order.place_count}}</td>
+            <td>{{ user_order.luggage_count}}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base_links_three_column.html" %}
+
+{% block title %}
+	{{form.page_title}}
+{% endblock %}
+
+{% block header %}
+	{{ form.header }}
+{% endblock %}
+
+{% block middle_column %}
+{% load iyoume_user_tags %}
+	<form role="form" action="{{form.processor}}" method="POST">
+        {% csrf_token %}
+		{% if user_id %}
+			<input type="hidden" id="user_id" name="user_id" value="{{user_id}}" />
+		{% endif %}	
+                {% if order_id %}
+			<input type="hidden" id="order_id" name="order_id" value="{{order_id}}" />
+		{% endif %}
+		{% for field in form %}
+			{% if field|is_checkbox %}
+			<div class="form-group text-left">
+    				<p>{{ field }} {{form.check_box_comment|safe}}</p>
+				{% if field.errors %}
+				<p class="text-warning">{{field.errors.as_text}}</p>
+				{% endif %}
+  			</div>
+    			{% else %}
+			<div class="form-group">
+    				<label>{{ field.help_text }}</label>
+    				{{ field }}
+				{% if field.errors %}
+				<div class="text-left">
+					<p class="text-warning">{{field.errors.as_text}}</p>
+				</div>
+				{% endif %}					
+  			</div>
+			{% endif %}  			
+		{% endfor %}
+  		<button type="submit" class="btn btn-default btn-block">{{form.submit_comment}}</button>
+	</form>
+	{{ form.post_form_comment|safe }}
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block links%}
+	{% if user.is_authenticated %}
+	<li class="dropdown">
+        	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Мои заказы<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                	<li><a href="/waybill/find/">Найти рейс</a></li>
+                    	<li><a href="/waybill/trips/">На какой рейс я записан?</a></li>
+                </ul>
+        </li>
+	<li class="dropdown">
+        	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Предложить рейс<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                	<li><a href="/waybill/add/">Добавить рейс</a></li>
+                    	<li><a href="/waybill/del/">Отменить рейс</a></li>
+                        <li><a href="/waybill/passangers/">Сколько у меня пассажиров</a></li>
+                </ul>
+        </li>
+        <li><a href="/waybill/travel/">Ищу попутчика</a></li>
+	<li><a href="/user/logout/">Выйти</a></li>
+	{% else %}
+	<li><a class="active" href="/user/">Пройти регистрацию</a></li>
+	<li><a href="/user/login/">Войти</a></li>
+	{% endif %}
+{% endblock %}	

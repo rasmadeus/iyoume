@@ -1,0 +1,15 @@
+{% extends "base_body_links.html" %}
+
+{% block title %}
+	О проекте iyoume
+{% endblock %}
+
+{% block header%}
+	Зачем вам нужен пропуск?
+{% endblock %}
+
+{% block content %}
+	Вы же уже зарегистрированы, дорогой {{user.username}}. Впрочем всегда можно
+	<a href = "/user/logout/">выйти </a> или <a href="#">редактировать</a> свои данные, если
+	у вас изменился номер мобильного телефона.
+{% endblock %}

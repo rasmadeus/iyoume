@@ -1,0 +1,17 @@
+{% extends "base_links.html" %}
+{% block body %}
+    <div class="container">
+
+      <div class="starter-template">
+        <h1>
+  	  {% block header%}
+	  {% endblock %}
+	</h1>
+        <p class="lead">
+	  {% block content %}
+	  {% endblock %}
+	</p>
+      </div>
+
+    </div>
+{% endblock %}

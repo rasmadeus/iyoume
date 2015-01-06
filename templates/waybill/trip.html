@@ -1,0 +1,76 @@
+{% extends "base_body_links.html" %}
+{% block head_data %}
+<style>
+    .bs-callout{
+        margin: 20px 0;
+        padding: 15px 30px 15px 15px;
+        border-left: 5px solid #eee;
+    }
+    .bs-callout h4{
+        margin-top: 0;
+    }
+    .bs-callout p:last-child{
+        margin-bottom: 0;
+    }
+    .bs-callout code, bs-callout .highlight{
+        background-color: #fff;
+    }
+    .bs-callout-info{
+        background-color: #eee;
+        border-color: #ddd;
+    }
+    .bs-callout-info-2{
+        background-color: #eef;
+        border-color: #dde;
+    }
+    .absolute-center {
+        margin: auto;
+        position: absolute;
+        top: 0; left: 0; bottom: 0; right: 0;
+    }
+    .vertical-center{
+        padding-top: 35px;
+    }   
+    .table-head-centered table thead tr th{
+        text-align: center;
+    }
+</style>
+{% endblock %}
+{% block header%}
+    Вы зарегистрированны на рейсы
+{% endblock %}
+
+{% block content %}
+<div class="container table-head-centered">
+<table class="table table-striped table-bordered table-condensed">
+    <thead>
+        <tr>
+            <th>Пункт сбора</th>
+            <th>Пункт назначения</th>
+            <th>Время отправления</th>
+            <th>Пассажирские места</th>
+            <th>Багажные места</th>
+            <th>Действие</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for user_order in user_orders %}
+        <tr>
+            <td>{{ user_order.order.from_point.name}}</td>
+            <td>{{ user_order.order.to_point.name}}</td>
+            <td>{{ user_order.order.date}}</td>
+            <td>{{ user_order.place_count}}</td>
+            <td>{{ user_order.luggage_count}}</td>
+            <td>
+                <form role="form" action="/waybill/cancel_trip/" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" id="user_order_pk" name="user_order_pk" value="{{ user_order.pk }}" />
+                    <button type="submit" class="btn btn-default btn-block">Сняться с рейса</button>
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}

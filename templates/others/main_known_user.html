@@ -1,0 +1,57 @@
+{% extends "base_body_links.html" %}
+
+{% block header%}
+        {% if header_main %}
+            {{ header_main }}
+	{% else %}
+            Куда пойдём дальше {{user.username}}?
+        {% endif %}
+{% endblock %}
+
+
+
+{% block content %}
+      <div class="row">
+        <div class="col-lg-4">
+          <img class="img-circle" src="/media/other/find_car.png" alt="Generic placeholder image" width="200px" height="200px"/>
+          <h2>Искать рейс</h2>
+          <p>Если вам надо добраться из одного пункта в другой, то это можно сделать бесплатно или же
+	   записаться на коммерческий рейс.</p>
+          <p><a class="btn btn-default" href="/waybill/find/" role="button">Найти рейс &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+       <div class="col-lg-4">
+          <img class="img-circle" src="/media/other/add_order.png" alt="Generic placeholder image" width="200px" height="200px"/>
+          <h2>Добавить рейс</h2>
+          <p>Возможно вы едите на своей машине и хотите подвести кого-нибудь или быть может вы
+	  таксист и хотите разместить коммерческое объявление, тогда вам сюда.</p>
+          <p><a class="btn btn-default" href="/waybill/add/" role="button">Добавить рейс &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="/media/other/chair.png" alt="Generic placeholder image" width="200px" height="200px"/>
+          <h2>Отменить рейс</h2>
+          <p>Если вы не можете предоставить машину для поездки
+	  , тогда отменить рейс можно здесь.</p>
+          <p><a class="btn btn-default" href="/waybill/del/" role="button">Куда я записан &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->     
+      </div><!-- /.row -->
+       <div class="row">
+        <div class="col-lg-4">
+          <img class="img-circle" src="/media/other/fellow_traveller.png" alt="Generic placeholder image" width="200px" height="200px"/>
+          <h2>Найти попутчиков</h2>
+          <p>для поездки на такси, например из аэропорта можно здесь.</p>
+          <p><a class="btn btn-default" href="/waybill/travel/" role="button">Искать попутчиков &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+       <div class="col-lg-4">
+          <img class="img-circle" src="/media/other/passangers.png" alt="Generic placeholder image" width="200px" height="200px"/>
+          <h2>Кого я везу</h2>
+          <p>Этот сервис расскажет вам о пассажирах, которые записались на ваши рейсы</p>
+          <p><a class="btn btn-default" href="/waybill/passangers/" role="button">Мои пассажиры &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="/media/other/where_i_am.png" alt="Generic placeholder image" width="200px" height="200px"/>
+          <h2>Куда я еду</h2>
+          <p>Здесь представлена информация о рейсах, на которые вы зарегистрированы.</p>
+          <p><a class="btn btn-default" href="/waybill/trips/" role="button">Куда я еду &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->     
+      </div><!-- /.row -->
+{% endblock %}

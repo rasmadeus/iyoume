@@ -1,0 +1,9 @@
+{% extends "base_body_links.html" %}
+
+{% block content %}
+	<div class="row">
+  		<div class="col-xs-6 col-md-4">{% block left_column %}{% endblock %}</div>
+  		<div class="col-xs-6 col-md-4">{% block middle_column %}{% endblock %}</div>
+ 	 	<div class="col-xs-6 col-md-4">{% block right_column %}{% endblock %}</div>
+	</div>	
+{% endblock %}
